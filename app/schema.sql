@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS note;
+
+CREATE TABLE note (
+    id VARCHAR(256) PRIMARY KEY,
+    content VARCHAR(256) NOT NULL
+);

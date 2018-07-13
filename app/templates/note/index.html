@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Ninja - Create a Note{% endblock %}
+
+{% block content %}
+{{ note_id }}
+<br>
+<section id="form-section">
+<form class="note" action="/create" method="post">
+    {{ form.hidden_tag() }}
+    {{ form.message }} <br>
+    {{ form.submit }}
+
+</form>
+</section>
+
+{% endblock %}
