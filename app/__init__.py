@@ -1,7 +1,8 @@
 import os
 import logging
 from flask import Flask
-from . import db, note, auth
+from flask_bootstrap import Bootstrap
+from . import db, note, auth, errors
 
 
 def create_app(test_config=None):
@@ -11,7 +12,7 @@ def create_app(test_config=None):
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'app.sqlite'),
     )
-
+    Bootstrap(app)
     if test_config is None:
         app.config.from_pyfile('config.py', silent=True)
     else:
@@ -25,8 +26,8 @@ def create_app(test_config=None):
     db.init_app(app)
 
     app.register_blueprint(auth.bp)
-
     app.register_blueprint(note.bp)
     app.add_url_rule('/', endpoint='index')
+    app.register_blueprint(errors.bp)
 
     return app

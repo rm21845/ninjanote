@@ -1,6 +1,7 @@
 import random
 import hashlib
 import base64
+import bcrypt
 import sys
 from cryptography.fernet import Fernet
 from app.db import get_db
@@ -39,9 +40,16 @@ def destroy_note(hash_id):
     db.execute(
         "UPDATE note SET content = 'Note has been destroyed' WHERE id=?", (hash_id,)
     )
+    db.execute(
+        "UPDATE note SET passwd = NULL WHERE id=?", (hash_id,)
+    )
     db.commit()
 
 
 def id_generator():
     random.seed()
     return random.getrandbits(106)
+
+
+def pass_encrypt(passwd):
+    return bcrypt.hashpw(passwd.encode(), bcrypt.gensalt(14))

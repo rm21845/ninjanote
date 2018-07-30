@@ -2,5 +2,6 @@ DROP TABLE IF EXISTS note;
 
 CREATE TABLE note (
     id VARCHAR(256) PRIMARY KEY,
-    content VARCHAR(256) NOT NULL
+    content VARCHAR(256) NOT NULL,
+    passwd VARCHAR(256) NULL
 );

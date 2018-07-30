@@ -1,0 +1,36 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Read Note{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{url_for('static', filename='style.css')}}">
+{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-default">
+    <a class="navbar-brand" href="/">Ninja Note</a>
+</div>
+{% endblock %}
+
+{% block content %}
+{{ note_id }}
+
+
+
+<div class="container">
+    <form>
+        {{ form.hidden_tag() }}
+        {{ wtf.form_field(form.read)}}
+    </form>
+</div>
+
+<div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+    <div class="container">
+        <div class="navbar-text">
+            <p>© 2018 Ninja Note</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

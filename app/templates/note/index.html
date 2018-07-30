@@ -1,17 +1,69 @@
-{% extends 'base.html' %}
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Ninja Note - Create a Note{% endblock %}
 
-{% block title %}Ninja - Create a Note{% endblock %}
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{url_for('static', filename='style.css')}}">
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script src="{{url_for('static', filename='script.js')}}"></script>
+{{super()}}
+{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-default">
+    <a class="navbar-brand" href="/">Ninja Note</a>
+</div>
+{% endblock %}
 
 {% block content %}
-{{ note_id }}
-<br>
-<section id="form-section">
-<form class="note" action="/create" method="post">
-    {{ form.hidden_tag() }}
-    {{ form.message }} <br>
-    {{ form.submit }}
 
-</form>
-</section>
 
+<!-- Target
+<input id="foo" value="grgrrgerg">
+
+<!-- Trigger
+<button type="button" class="btn btn-default clipboard" data-clipboard-target="#foo">Copy</button>
+</button>
+-->
+<div class="container">
+<div class="input-group">
+    <input id="foo" class="form-control" value= {{ note_id }} >
+      <span class="input-group-btn">
+        <button class="btn btn-default clipboard" type="button" data-clipboard-target="#foo">
+            <span class="glyphicon glyphicon-copy"></span>
+        </button>
+      </span>
+    </div><!-- /input-group -->
+</div>
+<div id="form" class="container">
+    <form method="POST" action="/create">
+        {{ form.hidden_tag() }}
+        {{ wtf.form_field(form.message)}}
+        {{ wtf.form_field(form.submit)}}
+        <br>
+        <br>
+        {{ wtf.form_field(form.password, form_type="horizontal", horizontal_columns=('sm', 2, 3))}}
+        <br>
+        <br>
+
+        {{ wtf.form_field(form.confirm , form_type="horizontal", horizontal_columns=('sm', 2, 3))}}
+    </form>
+</div>
+
+
+<div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+    <div class="container">
+        <div class="navbar-text">
+            <p>© 2018 Ninja Note</p>
+        </div>
+    </div>
+</div>
 {% endblock %}
+
+
+
