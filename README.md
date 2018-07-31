@@ -2,9 +2,10 @@
 
 ## MVP
 * Ability to write, send, and read notes
-* SHA1 encryption of the note (password protected)
+* SHA256 Hashing of ID
+* AES note encryption
+* Bcrypt password protection
 * Note is destroyed after read (expires after 30 days)
-* Flask with a RESTful API on the backend
 * Flask-boostrap on the front end
 * sqlite for testing and development
 
