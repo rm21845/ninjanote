@@ -71,6 +71,6 @@ def create():
             "INSERT INTO note VALUES (?, ?, ?)", (hash_val, contents, hashedpwd)
         )
         db.commit()
-
+        note_id = 'http://localhost:5000/' + str(note_id)
         return render_template('note/index.html', note_id=note_id, form=form)
 

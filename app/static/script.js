@@ -13,3 +13,15 @@ clipboard.on('error', function(e) {
     console.error('Action:', e.action);
     console.error('Trigger:', e.trigger);
 });
+
+function showLink() {
+    var link = document.getElementById('clip');
+    var note_io = document.getElementById('foo');
+    console.log(note_io.value);
+    if (note_io.value != "")
+    {
+        link.style.display = 'block';
+    }
+}
+
+showLink();

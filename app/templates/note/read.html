@@ -15,16 +15,17 @@
 {% endblock %}
 
 {% block content %}
-{{ note_id }}
-
-
-
 <div class="container">
     <form>
         {{ form.hidden_tag() }}
         {{ wtf.form_field(form.read)}}
     </form>
+    <div class="alert alert-danger" role="alert">
+        <strong>Warning!</strong> this note has been <b>destroyed.</b> You will not be able to retrieve
+        the note at another time.
+    </div>
 </div>
+
 
 <div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
     <div class="container">

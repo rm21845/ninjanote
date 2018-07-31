@@ -22,15 +22,11 @@
 
 {% block content %}
 
-
-<!-- Target
-<input id="foo" value="grgrrgerg">
-
-<!-- Trigger
-<button type="button" class="btn btn-default clipboard" data-clipboard-target="#foo">Copy</button>
-</button>
--->
-<div class="container">
+<div id="clip" class="container">
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <strong>Congratulations!</strong> your note has been <b>created.</b>
+    </div>
+        <label for="foo">Generated note link</label>
 <div class="input-group">
     <input id="foo" class="form-control" value= {{ note_id }} >
       <span class="input-group-btn">
@@ -38,13 +34,13 @@
             <span class="glyphicon glyphicon-copy"></span>
         </button>
       </span>
-    </div><!-- /input-group -->
+    </div>
 </div>
 <div id="form" class="container">
     <form method="POST" action="/create">
         {{ form.hidden_tag() }}
         {{ wtf.form_field(form.message)}}
-        {{ wtf.form_field(form.submit)}}
+        {{ wtf.form_field(form.submit, class="btn btn-primary btn-lg")}}
         <br>
         <br>
         {{ wtf.form_field(form.password, form_type="horizontal", horizontal_columns=('sm', 2, 3))}}

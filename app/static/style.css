@@ -21,3 +21,7 @@ body {
 #form {
     margin-top: 16px;
 }
+
+#clip {
+    display: none;
+}
