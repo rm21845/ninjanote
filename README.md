@@ -1,4 +1,4 @@
-# Ninja Note Prototype 
+# Ninja Note V.0.2.0 Alpha
 
 ## MVP
 * Ability to write, send, and read notes
